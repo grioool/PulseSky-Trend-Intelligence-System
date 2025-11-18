@@ -22,3 +22,27 @@
 	path = submodules/PulseSky-superset-visuals
 	url = https://github.com/grioool/PulseSky-superset-visuals
 	branch = main
+[submodule "PulseSky-ingestion-nifi"]
+	path = PulseSky-ingestion-nifi
+	url = https://github.com/grioool/PulseSky-ingestion-nifi
+	branch = main
+[submodule "PulseSky-kafka-cluster"]
+	path = PulseSky-kafka-cluster
+	url = https://github.com/grioool/PulseSky-kafka-cluster
+	branch = main
+[submodule "PulseSky-spark-streaming"]
+	path = PulseSky-spark-streaming
+	url = https://github.com/grioool/PulseSky-spark-streaming
+	branch = main
+[submodule "PulseSky-batch-ml"]
+	path = PulseSky-batch-ml
+	url = https://github.com/grioool/PulseSky-batch-ml
+	branch = main
+[submodule "PulseSky-opensearch-dashboards"]
+	path = PulseSky-opensearch-dashboards
+	url = https://github.com/grioool/PulseSky-opensearch-dashboards
+	branch = main
+[submodule "PulseSky-superset-visuals"]
+	path = PulseSky-superset-visuals
+	url = https://github.com/grioool/PulseSky-superset-visuals
+	branch = main
