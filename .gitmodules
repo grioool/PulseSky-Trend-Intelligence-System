@@ -1,18 +1,24 @@
 [submodule "submodules/PulseSky-ingestion-nifi"]
-    path = submodules/PulseSky-ingestion-nifi
-    url = https://github.com/grioool/PulseSky-ingestion-nifi
+	path = submodules/PulseSky-ingestion-nifi
+	url = https://github.com/grioool/PulseSky-ingestion-nifi
+	branch = main
 [submodule "submodules/PulseSky-kafka-cluster"]
-    path = submodules/PulseSky-kafka-cluster
-    url = https://github.com/grioool/PulseSky-kafka-cluster
+	path = submodules/PulseSky-kafka-cluster
+	url = https://github.com/grioool/PulseSky-kafka-cluster
+	branch = main
 [submodule "submodules/PulseSky-spark-streaming"]
-    path = submodules/PulseSky-spark-streaming
-    url = https://github.com/grioool/PulseSky-spark-streaming
+	path = submodules/PulseSky-spark-streaming
+	url = https://github.com/grioool/PulseSky-spark-streaming
+	branch = main
 [submodule "submodules/PulseSky-batch-ml"]
-    path = submodules/PulseSky-batch-ml
-    url = https://github.com/grioool/PulseSky-batch-ml
+	path = submodules/PulseSky-batch-ml
+	url = https://github.com/grioool/PulseSky-batch-ml
+	branch = main
 [submodule "submodules/PulseSky-opensearch-dashboards"]
-    path = submodules/PulseSky-opensearch-dashboards
-    url = https://github.com/grioool/PulseSky-opensearch-dashboards
+	path = submodules/PulseSky-opensearch-dashboards
+	url = https://github.com/grioool/PulseSky-opensearch-dashboards
+	branch = main
 [submodule "submodules/PulseSky-superset-visuals"]
-    path = submodules/PulseSky-superset-visuals
-    url = https://github.com/grioool/PulseSky-superset-visuals
+	path = submodules/PulseSky-superset-visuals
+	url = https://github.com/grioool/PulseSky-superset-visuals
+	branch = main
