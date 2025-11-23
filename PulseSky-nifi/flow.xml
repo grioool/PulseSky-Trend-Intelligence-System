@@ -1,0 +1,2357 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flowController encoding-version="1.4">
+  <maxTimerDrivenThreadCount>10</maxTimerDrivenThreadCount>
+  <maxEventDrivenThreadCount>1</maxEventDrivenThreadCount>
+  <registries/>
+  <parameterContexts/>
+  <rootGroup>
+    <id>7f72a945-019a-1000-3f56-3af3058494ef</id>
+    <name>NiFi Flow</name>
+    <position x="0.0" y="0.0"/>
+    <comment/>
+    <flowfileConcurrency>UNBOUNDED</flowfileConcurrency>
+    <flowfileOutboundPolicy>STREAM_WHEN_AVAILABLE</flowfileOutboundPolicy>
+    <defaultFlowFileExpiration>0 sec</defaultFlowFileExpiration>
+    <defaultBackPressureObjectThreshold>10000</defaultBackPressureObjectThreshold>
+    <defaultBackPressureDataSizeThreshold>1 GB</defaultBackPressureDataSizeThreshold>
+    <processor>
+      <id>7f758b9b-019a-1000-6e50-dc836ced562a</id>
+      <name>LogMessage</name>
+      <position x="888.0" y="760.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.LogMessage</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>log-level</name>
+        <value>info</value>
+      </property>
+      <property>
+        <name>log-prefix</name>
+      </property>
+      <property>
+        <name>log-message</name>
+      </property>
+      <autoTerminatedRelationship>success</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>8741e461-019a-1000-3aec-2b41587dc995</id>
+      <name>InvokeHTTP</name>
+      <position x="1728.0" y="-32.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.InvokeHTTP</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>HTTP Method</name>
+        <value>GET</value>
+      </property>
+      <property>
+        <name>Remote URL</name>
+        <value>https://api.twitterapi.io/twitter/community/get_tweets_from_all_community?queryType=Latest&amp;query=politics</value>
+      </property>
+      <property>
+        <name>SSL Context Service</name>
+      </property>
+      <property>
+        <name>Connection Timeout</name>
+        <value>5 secs</value>
+      </property>
+      <property>
+        <name>Read Timeout</name>
+        <value>15 secs</value>
+      </property>
+      <property>
+        <name>idle-timeout</name>
+        <value>5 mins</value>
+      </property>
+      <property>
+        <name>max-idle-connections</name>
+        <value>5</value>
+      </property>
+      <property>
+        <name>Include Date Header</name>
+        <value>True</value>
+      </property>
+      <property>
+        <name>Follow Redirects</name>
+        <value>True</value>
+      </property>
+      <property>
+        <name>disable-http2</name>
+        <value>False</value>
+      </property>
+      <property>
+        <name>Attributes to Send</name>
+      </property>
+      <property>
+        <name>Useragent</name>
+      </property>
+      <property>
+        <name>Basic Authentication Username</name>
+      </property>
+      <property>
+        <name>Basic Authentication Password</name>
+      </property>
+      <property>
+        <name>proxy-configuration-service</name>
+      </property>
+      <property>
+        <name>Proxy Host</name>
+      </property>
+      <property>
+        <name>Proxy Port</name>
+      </property>
+      <property>
+        <name>Proxy Type</name>
+        <value>http</value>
+      </property>
+      <property>
+        <name>invokehttp-proxy-user</name>
+      </property>
+      <property>
+        <name>invokehttp-proxy-password</name>
+      </property>
+      <property>
+        <name>Put Response Body In Attribute</name>
+      </property>
+      <property>
+        <name>Max Length To Put In Attribute</name>
+        <value>256</value>
+      </property>
+      <property>
+        <name>Digest Authentication</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>Always Output Response</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>Add Response Headers to Request</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>Content-Type</name>
+        <value>${mime.type}</value>
+      </property>
+      <property>
+        <name>send-message-body</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>Use Chunked Encoding</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>Penalize on "No Retry"</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>use-etag</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>etag-max-cache-size</name>
+        <value>10MB</value>
+      </property>
+      <property>
+        <name>ignore-response-content</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>form-body-form-name</name>
+      </property>
+      <property>
+        <name>set-form-filename</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>X-API-KEY</name>
+        <value>new1_ba32536ac97f4fb8b2ea93e388fdff2a</value>
+      </property>
+      <autoTerminatedRelationship>Original</autoTerminatedRelationship>
+      <autoTerminatedRelationship>Failure</autoTerminatedRelationship>
+      <autoTerminatedRelationship>Retry</autoTerminatedRelationship>
+      <autoTerminatedRelationship>No Retry</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>876d0832-019a-1000-0e97-30055053c266</id>
+      <name>ConvertRecord</name>
+      <position x="896.0" y="384.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.ConvertRecord</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>record-reader</name>
+        <value>876de9d6-019a-1000-9e4d-c2f2ae180d79</value>
+      </property>
+      <property>
+        <name>record-writer</name>
+        <value>877a5a5a-019a-1000-455e-1420a58827bd</value>
+      </property>
+      <property>
+        <name>include-zero-record-flowfiles</name>
+        <value>true</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>7f7bcbde-019a-1000-cc2d-b07834605dc6</id>
+      <name>LogMessage</name>
+      <position x="2232.0" y="792.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.LogMessage</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>log-level</name>
+        <value>info</value>
+      </property>
+      <property>
+        <name>log-prefix</name>
+      </property>
+      <property>
+        <name>log-message</name>
+      </property>
+      <autoTerminatedRelationship>success</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>8746a4ad-019a-1000-b7a3-7e417296c4e0</id>
+      <name>ConnectWebSocket</name>
+      <position x="464.0" y="-16.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.websocket.ConnectWebSocket</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-websocket-processors-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>websocket-client-controller-service</name>
+        <value>8747a7c8-019a-1000-d090-71adf038f822</value>
+      </property>
+      <property>
+        <name>websocket-client-id</name>
+        <value>bluesky</value>
+      </property>
+      <autoTerminatedRelationship>binary message</autoTerminatedRelationship>
+      <autoTerminatedRelationship>connected</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>8e33145e-019a-1000-1c4a-2e0b5acd0fc5</id>
+      <name>PublishKafka_2_6</name>
+      <position x="464.0" y="752.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.kafka.pubsub.PublishKafka_2_6</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-kafka-2-6-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>bootstrap.servers</name>
+        <value>54.226.214.16:9092</value>
+      </property>
+      <property>
+        <name>security.protocol</name>
+        <value>PLAINTEXT</value>
+      </property>
+      <property>
+        <name>sasl.mechanism</name>
+        <value>GSSAPI</value>
+      </property>
+      <property>
+        <name>sasl.kerberos.service.name</name>
+      </property>
+      <property>
+        <name>kerberos-credentials-service</name>
+      </property>
+      <property>
+        <name>sasl.kerberos.principal</name>
+      </property>
+      <property>
+        <name>sasl.kerberos.keytab</name>
+      </property>
+      <property>
+        <name>sasl.username</name>
+      </property>
+      <property>
+        <name>sasl.password</name>
+      </property>
+      <property>
+        <name>sasl.token.auth</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>ssl.context.service</name>
+      </property>
+      <property>
+        <name>topic</name>
+        <value>fire</value>
+      </property>
+      <property>
+        <name>acks</name>
+        <value>0</value>
+      </property>
+      <property>
+        <name>Failure Strategy</name>
+        <value>Route to Failure</value>
+      </property>
+      <property>
+        <name>use-transactions</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>transactional-id-prefix</name>
+      </property>
+      <property>
+        <name>attribute-name-regex</name>
+      </property>
+      <property>
+        <name>message-header-encoding</name>
+        <value>UTF-8</value>
+      </property>
+      <property>
+        <name>kafka-key</name>
+      </property>
+      <property>
+        <name>key-attribute-encoding</name>
+        <value>utf-8</value>
+      </property>
+      <property>
+        <name>message-demarcator</name>
+      </property>
+      <property>
+        <name>max.request.size</name>
+        <value>1 MB</value>
+      </property>
+      <property>
+        <name>ack.wait.time</name>
+        <value>5 secs</value>
+      </property>
+      <property>
+        <name>max.block.ms</name>
+        <value>5 sec</value>
+      </property>
+      <property>
+        <name>partitioner.class</name>
+        <value>org.apache.kafka.clients.producer.internals.DefaultPartitioner</value>
+      </property>
+      <property>
+        <name>partition</name>
+      </property>
+      <property>
+        <name>compression.type</name>
+        <value>none</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>9d532f7b-019a-1000-6707-c3f42d76e9e1</id>
+      <name>UpdateAttribute</name>
+      <position x="2688.0" y="416.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.attributes.UpdateAttribute</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-update-attribute-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Delete Attributes Expression</name>
+      </property>
+      <property>
+        <name>Store State</name>
+        <value>Do not store state</value>
+      </property>
+      <property>
+        <name>Stateful Variables Initial Value</name>
+      </property>
+      <property>
+        <name>canonical-value-lookup-cache-size</name>
+        <value>100</value>
+      </property>
+      <property>
+        <name>s3.key.prefix</name>
+        <value>twitter_raw/ingestion_date=${now():format('yyyy-MM-dd')}/</value>
+      </property>
+      <property>
+        <name>s3.filename</name>
+        <value>${now():format('yyyy-MM-dd')}-${uuid}.parquet</value>
+      </property>
+    </processor>
+    <processor>
+      <id>87433220-019a-1000-4a08-6423869ecc4f</id>
+      <name>SplitJson</name>
+      <position x="1728.0" y="160.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.SplitJson</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>JsonPath Expression</name>
+        <value>$.tweets</value>
+      </property>
+      <property>
+        <name>Null Value Representation</name>
+        <value>empty string</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+      <autoTerminatedRelationship>original</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>879bfe31-019a-1000-66fb-30bf58fdfe97</id>
+      <name>EvaluateJsonPath</name>
+      <position x="1720.0" y="376.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.EvaluateJsonPath</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Destination</name>
+        <value>flowfile-attribute</value>
+      </property>
+      <property>
+        <name>Return Type</name>
+        <value>auto-detect</value>
+      </property>
+      <property>
+        <name>Path Not Found Behavior</name>
+        <value>ignore</value>
+      </property>
+      <property>
+        <name>Null Value Representation</name>
+        <value>empty string</value>
+      </property>
+      <property>
+        <name>text</name>
+        <value>$.text</value>
+      </property>
+      <property>
+        <name>id</name>
+        <value>$.id</value>
+      </property>
+      <property>
+        <name>timestamp</name>
+        <value>$.createdAt</value>
+      </property>
+      <property>
+        <name>language</name>
+        <value>$.lang</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+      <autoTerminatedRelationship>unmatched</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>ad6a25ee-019a-1000-c9d1-70e498edb524</id>
+      <name>PutS3Object</name>
+      <position x="1320.0" y="584.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.aws.s3.PutS3Object</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-aws-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Object Key</name>
+        <value>${s3.key.prefix}${s3.filename}</value>
+      </property>
+      <property>
+        <name>Bucket</name>
+        <value>bigdata-bluesky-sentiment</value>
+      </property>
+      <property>
+        <name>Content Type</name>
+      </property>
+      <property>
+        <name>Content Disposition</name>
+      </property>
+      <property>
+        <name>Cache Control</name>
+      </property>
+      <property>
+        <name>Access Key</name>
+        <value>enc{50d3da9901906112608ab68e1978ca1918beec59d28962e74617fc022510f52870c20fe4d4e58826238ebcba1876b3be34a7b91e}</value>
+      </property>
+      <property>
+        <name>Secret Key</name>
+        <value>enc{ea16b274c1dc2f06a57b888c415629b4d2821f2c7f31076bfefa8e20fc62ccf9f3655f8f461fa0e52ceb3c0219ad8c379bfbe7019ee2a556e88e866aa14ad2c79c807f50ecbebce1}</value>
+      </property>
+      <property>
+        <name>Credentials File</name>
+      </property>
+      <property>
+        <name>AWS Credentials Provider service</name>
+      </property>
+      <property>
+        <name>s3-object-tags-prefix</name>
+      </property>
+      <property>
+        <name>s3-object-remove-tags-prefix</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>Storage Class</name>
+        <value>Standard</value>
+      </property>
+      <property>
+        <name>Region</name>
+        <value>us-east-1</value>
+      </property>
+      <property>
+        <name>Communications Timeout</name>
+        <value>30 secs</value>
+      </property>
+      <property>
+        <name>Expiration Time Rule</name>
+      </property>
+      <property>
+        <name>FullControl User List</name>
+        <value>${s3.permissions.full.users}</value>
+      </property>
+      <property>
+        <name>Read Permission User List</name>
+        <value>${s3.permissions.read.users}</value>
+      </property>
+      <property>
+        <name>Write Permission User List</name>
+        <value>${s3.permissions.write.users}</value>
+      </property>
+      <property>
+        <name>Read ACL User List</name>
+        <value>${s3.permissions.readacl.users}</value>
+      </property>
+      <property>
+        <name>Write ACL User List</name>
+        <value>${s3.permissions.writeacl.users}</value>
+      </property>
+      <property>
+        <name>Owner</name>
+        <value>${s3.owner}</value>
+      </property>
+      <property>
+        <name>canned-acl</name>
+        <value>${s3.permissions.cannedacl}</value>
+      </property>
+      <property>
+        <name>SSL Context Service</name>
+      </property>
+      <property>
+        <name>Endpoint Override URL</name>
+      </property>
+      <property>
+        <name>Signer Override</name>
+        <value>Default Signature</value>
+      </property>
+      <property>
+        <name>Multipart Threshold</name>
+        <value>5 GB</value>
+      </property>
+      <property>
+        <name>Multipart Part Size</name>
+        <value>5 GB</value>
+      </property>
+      <property>
+        <name>Multipart Upload AgeOff Interval</name>
+        <value>60 min</value>
+      </property>
+      <property>
+        <name>Multipart Upload Max Age Threshold</name>
+        <value>7 days</value>
+      </property>
+      <property>
+        <name>s3-temporary-directory-multipart</name>
+        <value>${java.io.tmpdir}</value>
+      </property>
+      <property>
+        <name>server-side-encryption</name>
+        <value>None</value>
+      </property>
+      <property>
+        <name>encryption-service</name>
+      </property>
+      <property>
+        <name>use-chunked-encoding</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>use-path-style-access</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>proxy-configuration-service</name>
+      </property>
+      <property>
+        <name>Proxy Host</name>
+      </property>
+      <property>
+        <name>Proxy Host Port</name>
+      </property>
+      <property>
+        <name>proxy-user-name</name>
+      </property>
+      <property>
+        <name>proxy-user-password</name>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>875c2446-019a-1000-8914-697d7daab28f</id>
+      <name>UpdateAttribute</name>
+      <position x="464.0" y="184.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.attributes.UpdateAttribute</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-update-attribute-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Delete Attributes Expression</name>
+      </property>
+      <property>
+        <name>Store State</name>
+        <value>Do not store state</value>
+      </property>
+      <property>
+        <name>Stateful Variables Initial Value</name>
+      </property>
+      <property>
+        <name>canonical-value-lookup-cache-size</name>
+        <value>100</value>
+      </property>
+      <property>
+        <name>mime.type</name>
+        <value>application/json</value>
+      </property>
+    </processor>
+    <processor>
+      <id>879ea1f3-019a-1000-116b-18e46f3f9bfc</id>
+      <name>AttributesToJSON</name>
+      <position x="1720.0" y="568.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.AttributesToJSON</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Attributes List</name>
+        <value>id,text,language,timestamp</value>
+      </property>
+      <property>
+        <name>attributes-to-json-regex</name>
+      </property>
+      <property>
+        <name>Destination</name>
+        <value>flowfile-content</value>
+      </property>
+      <property>
+        <name>Include Core Attributes</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>Null Value</name>
+        <value>false</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>876c9725-019a-1000-6d93-b20232b7784d</id>
+      <name>MergeRecord</name>
+      <position x="896.0" y="184.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.MergeRecord</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>record-reader</name>
+        <value>876de9d6-019a-1000-9e4d-c2f2ae180d79</value>
+      </property>
+      <property>
+        <name>record-writer</name>
+        <value>876e1e67-019a-1000-d00f-0b15a2dd6c8f</value>
+      </property>
+      <property>
+        <name>merge-strategy</name>
+        <value>Bin-Packing Algorithm</value>
+      </property>
+      <property>
+        <name>correlation-attribute-name</name>
+      </property>
+      <property>
+        <name>Attribute Strategy</name>
+        <value>Keep Only Common Attributes</value>
+      </property>
+      <property>
+        <name>min-records</name>
+        <value>50</value>
+      </property>
+      <property>
+        <name>max-records</name>
+        <value>1000</value>
+      </property>
+      <property>
+        <name>min-bin-size</name>
+        <value>0 B</value>
+      </property>
+      <property>
+        <name>max-bin-size</name>
+      </property>
+      <property>
+        <name>max-bin-age</name>
+      </property>
+      <property>
+        <name>max.bin.count</name>
+        <value>500</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+      <autoTerminatedRelationship>original</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>87a3819e-019a-1000-8cbb-82ec16850c11</id>
+      <name>MergeRecord</name>
+      <position x="2200.0" y="160.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.MergeRecord</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>record-reader</name>
+        <value>876de9d6-019a-1000-9e4d-c2f2ae180d79</value>
+      </property>
+      <property>
+        <name>record-writer</name>
+        <value>876e1e67-019a-1000-d00f-0b15a2dd6c8f</value>
+      </property>
+      <property>
+        <name>merge-strategy</name>
+        <value>Bin-Packing Algorithm</value>
+      </property>
+      <property>
+        <name>correlation-attribute-name</name>
+      </property>
+      <property>
+        <name>Attribute Strategy</name>
+        <value>Keep Only Common Attributes</value>
+      </property>
+      <property>
+        <name>min-records</name>
+        <value>5</value>
+      </property>
+      <property>
+        <name>max-records</name>
+        <value>1000</value>
+      </property>
+      <property>
+        <name>min-bin-size</name>
+        <value>0 B</value>
+      </property>
+      <property>
+        <name>max-bin-size</name>
+      </property>
+      <property>
+        <name>max-bin-age</name>
+      </property>
+      <property>
+        <name>max.bin.count</name>
+        <value>10</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+      <autoTerminatedRelationship>original</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>8def7745-019a-1000-121c-0ba8d82d8c69</id>
+      <name>GenerateFlowFile</name>
+      <position x="2728.0" y="-16.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.GenerateFlowFile</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>File Size</name>
+        <value>0B</value>
+      </property>
+      <property>
+        <name>Batch Size</name>
+        <value>1</value>
+      </property>
+      <property>
+        <name>Data Format</name>
+        <value>Text</value>
+      </property>
+      <property>
+        <name>Unique FlowFiles</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>generate-ff-custom-text</name>
+        <value>{"tweets":[{"type":"tweet","id":"1987511633434874021","url":"https://x.com/dharpe45/status/1987511633434874021","twitterUrl":"https://twitter.com/dharpe45/status/1987511633434874021","text":"@TrumpDailyPosts I guess MTG has decided to go on the leftist side of politics. Love ❤️ Of Money is the root of all evil &#128127;","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":0,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 13:24:34 +0000 2025","lang":"en","bookmarkCount":0,"isReply":true,"inReplyToId":"1987196994075697177","conversationId":"1987196994075697177","displayTextRange":[17,122],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"dharpe45","url":"https://x.com/dharpe45","twitterUrl":"https://twitter.com/dharpe45","id":"1719135899747799040","name":"Dorothy Harpe","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1719157234607771648/EtwQWx-4_normal.jpg","coverPicture":"","description":"","location":"Atlanta, GA","followers":0,"following":0,"status":"","canDm":false,"canMediaTag":true,"createdAt":"Mon Oct 30 23:35:54 +0000 2023","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[{"id_str":"1686901686185721857","name":"Commentary Donald J. Trump Posts From Truth Social","screen_name":"TrumpDailyPosts","indices":[0,16]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987508462008578278","url":"https://x.com/grok/status/1987508462008578278","twitterUrl":"https://twitter.com/grok/status/1987508462008578278","text":"@TheRealBroDon @sklnm09 @just_Deevine High chance it's real—sklnm09 has posted dozens of short, reactive comments on fights, memes, and politics over the past week, with varying tones like sarcasm or emojis. The gibberish name screams throwaway troll account, but the pattern matches genuine edgelords farming engagement. Fake accounts usually lack this sporadic history; I'd peg it at 85% authentic human outrage.","source":"Twitter for iPhone","retweetCount":0,"replyCount":1,"likeCount":0,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 13:11:58 +0000 2025","lang":"en","bookmarkCount":0,"isReply":true,"inReplyToId":"1987508344613908800","conversationId":"1986929511548482014","displayTextRange":[38,310],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"grok","url":"https://x.com/grok","twitterUrl":"https://twitter.com/grok","id":"1720665183188922368","name":"Grok","isVerified":false,"isBlueVerified":false,"verifiedType":"Business","profilePicture":"https://pbs.twimg.com/profile_images/1893219113717342208/Vgg2hEPa_normal.jpg","coverPicture":"","description":"","location":"wherever you are","followers":0,"following":0,"status":"","canDm":false,"canMediaTag":true,"createdAt":"Sat Nov 04 04:52:34 +0000 2023","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"urls":[],"user_mentions":[]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987503918885335364","url":"https://x.com/BenFreeman2225/status/1987503918885335364","twitterUrl":"https://twitter.com/BenFreeman2225/status/1987503918885335364","text":"@GeniusBusiness_ Stop arguing with your friends and neighbors over politics. You have much more in common with them than the people in DC.  \nThey want us dumd, distracted, divided, and fearful. \nWe're easier to control that way.","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":1,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 12:53:54 +0000 2025","lang":"en","bookmarkCount":0,"isReply":true,"inReplyToId":"1987142625644978606","conversationId":"1987142625644978606","displayTextRange":[17,228],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"BenFreeman2225","url":"https://x.com/BenFreeman2225","twitterUrl":"https://twitter.com/BenFreeman2225","id":"1587104453936795649","name":"Freeman A.","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1607922682850410496/q61hqk9u_normal.jpg","coverPicture":"","description":"","location":"South Florida","followers":0,"following":0,"status":"","canDm":false,"canMediaTag":true,"createdAt":"Mon Oct 31 15:30:30 +0000 2022","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{"bounding_box":{"coordinates":[[[-80.25146,26.348229],[-80.25146,26.431237],[-80.203197,26.431237],[-80.203197,26.348229],[-80.25146,26.348229]]],"type":"Polygon"},"country":"United States","country_code":"US","full_name":"Mission Bay, FL","name":"Mission Bay","id":"003f10cc71a3ab9b","place_type":"city","url":"https://api.twitter.com/1.1/geo/id/003f10cc71a3ab9b.json"},"entities":{"hashtags":[],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[{"id_str":"1654777769807560707","name":"Genius Business &#127482;&#127480;","screen_name":"GeniusBusiness_","indices":[0,16]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987503330470572144","url":"https://x.com/amira_mirel/status/1987503330470572144","twitterUrl":"https://twitter.com/amira_mirel/status/1987503330470572144","text":"Polymarket vs. Bookmakers: Which Wins?\nDifferences:\nPolymarket: Decentralized, blockchain-based, crypto bets, predicts events (politics, tech, sports).\nBookmakers: Centralized, fiat-focused, sports/casino, locally regulated.\nPolymarket Advantages:\nMore control via smart contracts\nHigh liquidity &amp; transparency\nUnique markets\nDaily rewards\nLimit orders \nI think the choice is obvious, and Polymarket wins.\n\n@BaddiesOnPM @PolymarketTrade @Polymarket","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":5,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 12:51:34 +0000 2025","lang":"en","bookmarkCount":0,"isReply":false,"inReplyToId":null,"conversationId":"1987503330470572144","displayTextRange":[0,281],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"amira_mirel","url":"https://x.com/amira_mirel","twitterUrl":"https://twitter.com/amira_mirel","id":"878615099748921345","name":"Amira","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1792231721108160512/HPy2NiO1_normal.jpg","coverPicture":"","description":"","location":"Paris, France","followers":0,"following":0,"status":"","canDm":true,"canMediaTag":true,"createdAt":"Sat Jun 24 14:05:38 +0000 2017","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{"media":[{"display_url":"pic.twitter.com/b1l4TbwOP0","expanded_url":"https://twitter.com/amira_mirel/status/1987503330470572144/photo/1","id_str":"1987502436760928256","indices":[282,305],"media_key":"3_1987502436760928256","media_url_https":"https://pbs.twimg.com/media/G5UG751bwAAnK3U.jpg","type":"photo","url":"https://t.co/b1l4TbwOP0","ext_media_availability":{"status":"Available"},"features":{"all":{"tags":[{"user_id":"1971742954391064577","name":"PolyBaddies","screen_name":"BaddiesOnPM","type":"user"},{"user_id":"1261335549215989760","name":"Polymarket","screen_name":"Polymarket","type":"user"},{"user_id":"1965783030062022656","name":"Polymarket Traders","screen_name":"PolymarketTrade","type":"user"}]},"large":{"faces":[{"x":271,"y":1150,"h":71,"w":71},{"x":776,"y":295,"h":72,"w":72}]},"medium":{"faces":[{"x":254,"y":1078,"h":66,"w":66},{"x":727,"y":276,"h":67,"w":67}]},"small":{"faces":[{"x":143,"y":610,"h":37,"w":37},{"x":412,"y":156,"h":38,"w":38}]},"orig":{"faces":[{"x":271,"y":1150,"h":71,"w":71},{"x":776,"y":295,"h":72,"w":72}]}},"sizes":{"large":{"h":1280,"w":1280,"resize":"fit"},"medium":{"h":1200,"w":1200,"resize":"fit"},"small":{"h":680,"w":680,"resize":"fit"},"thumb":{"h":150,"w":150,"resize":"crop"}},"original_info":{"height":1280,"width":1280,"focus_rects":[{"x":0,"y":563,"w":1280,"h":717},{"x":0,"y":0,"w":1280,"h":1280},{"x":0,"y":0,"w":1123,"h":1280},{"x":0,"y":0,"w":640,"h":1280},{"x":0,"y":0,"w":1280,"h":1280}]},"allow_download_status":{"allow_download":true},"media_results":{"result":{"media_key":"3_1987502436760928256"}}}]},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"urls":[],"user_mentions":[{"id_str":"1971742954391064577","name":"PolyBaddies","screen_name":"BaddiesOnPM","indices":[407,419]},{"id_str":"1965783030062022656","name":"Polymarket Traders","screen_name":"PolymarketTrade","indices":[420,436]},{"id_str":"1261335549215989760","name":"Polymarket","screen_name":"Polymarket","indices":[437,448]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987492154370093132","url":"https://x.com/ArminNavabi/status/1987492154370093132","twitterUrl":"https://twitter.com/ArminNavabi/status/1987492154370093132","text":"Join our next live group call: &#128279; https://t.co/VSUGvgmIGj\nCome and discuss the biggest events shaping politics now: the West’s split over Israel, the rise of the far left and the far right, and shifts across the Middle East. Take part in an open group call, participate, ask questions, or just listen. Free to join.","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":1,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 12:07:10 +0000 2025","lang":"en","bookmarkCount":0,"isReply":false,"inReplyToId":null,"conversationId":"1987492154370093132","displayTextRange":[0,274],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"ArminNavabi","url":"https://x.com/ArminNavabi","twitterUrl":"https://twitter.com/ArminNavabi","id":"34001374","name":"Armin Navabi","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1619385657419497477/Vy-kF2Vw_normal.jpg","coverPicture":"","description":"","location":"Vancouver","followers":0,"following":0,"status":"","canDm":true,"canMediaTag":true,"createdAt":"Tue Apr 21 19:01:36 +0000 2009","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"urls":[{"display_url":"skool.com/worldliberty/c…","expanded_url":"https://www.skool.com/worldliberty/calendar","url":"https://t.co/VSUGvgmIGj","indices":[33,56]}],"user_mentions":[]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987491005612876190","url":"https://x.com/yamznor/status/1987491005612876190","twitterUrl":"https://twitter.com/yamznor/status/1987491005612876190","text":"something that’s been helping me feel more grounded in my manifestation is saying parts of my identity i have learned to be cemented in my brain as “true,” and then listing my affirmations \n\n- my name is xyz\n- i am 20\n- i am a woman\n- i like politics \n- i am sps girlfriend","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":0,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 12:02:36 +0000 2025","lang":"en","bookmarkCount":0,"isReply":false,"inReplyToId":null,"conversationId":"1987491005612876190","displayTextRange":[0,273],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"yamznor","url":"https://x.com/yamznor","twitterUrl":"https://twitter.com/yamznor","id":"1940131344312619008","name":"y","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1982485751288803328/tOR3UzV6_normal.jpg","coverPicture":"","description":"","location":"the hills","followers":0,"following":0,"status":"","canDm":false,"canMediaTag":true,"createdAt":"Tue Jul 01 19:32:28 +0000 2025","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987490310943830286","url":"https://x.com/Crypto_Softera/status/1987490310943830286","twitterUrl":"https://twitter.com/Crypto_Softera/status/1987490310943830286","text":"Keep in mind that there are a lot of categories you can trade from ranging from Politics to Economy depending on your interest and knowledge \n\nBut I will advice you copy trade if you’re just getting started and have little to know knowledge about the platform \n⬇️ https://t.co/teKBoKJ5wh","source":"Twitter for iPhone","retweetCount":0,"replyCount":1,"likeCount":1,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 11:59:50 +0000 2025","lang":"en","bookmarkCount":0,"isReply":true,"inReplyToId":"1987490296297607394","conversationId":"1987490290060480935","displayTextRange":[0,263],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"Crypto_Softera","url":"https://x.com/Crypto_Softera","twitterUrl":"https://twitter.com/Crypto_Softera","id":"1869368122198609920","name":"Vikkie","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1942529940475240448/k3xTh6bY_normal.jpg","coverPicture":"","description":"","location":"","followers":0,"following":0,"status":"","canDm":true,"canMediaTag":true,"createdAt":"Wed Dec 18 13:04:39 +0000 2024","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{"media":[{"display_url":"pic.twitter.com/teKBoKJ5wh","expanded_url":"https://twitter.com/Crypto_Softera/status/1987490310943830286/photo/1","id_str":"1987490302286774272","indices":[264,287],"media_key":"3_1987490302286774272","media_url_https":"https://pbs.twimg.com/media/G5T75lZWQAADMbh.jpg","type":"photo","url":"https://t.co/teKBoKJ5wh","ext_media_availability":{"status":"Available"},"features":{"large":{"faces":[{"x":673,"y":165,"h":37,"w":37},{"x":498,"y":463,"h":42,"w":42}]},"medium":{"faces":[{"x":673,"y":165,"h":37,"w":37},{"x":498,"y":463,"h":42,"w":42}]},"small":{"faces":[{"x":446,"y":109,"h":24,"w":24},{"x":330,"y":307,"h":27,"w":27}]},"orig":{"faces":[{"x":673,"y":165,"h":37,"w":37},{"x":498,"y":463,"h":42,"w":42}]}},"sizes":{"large":{"h":581,"w":1024,"resize":"fit"},"medium":{"h":581,"w":1024,"resize":"fit"},"small":{"h":386,"w":680,"resize":"fit"},"thumb":{"h":150,"w":150,"resize":"crop"}},"original_info":{"height":581,"width":1024,"focus_rects":[{"x":0,"y":0,"w":1024,"h":573},{"x":0,"y":0,"w":581,"h":581},{"x":0,"y":0,"w":510,"h":581},{"x":84,"y":0,"w":291,"h":581},{"x":0,"y":0,"w":1024,"h":581}]},"allow_download_status":{"allow_download":true},"media_results":{"result":{"media_key":"3_1987490302286774272"}}}]},"card":null,"place":{},"entities":{"hashtags":[],"media":[{"display_url":"pic.twitter.com/teKBoKJ5wh","expanded_url":"https://twitter.com/Crypto_Softera/status/1987490310943830286/photo/1","id_str":"1987490302286774272","indices":[264,287],"media_key":"3_1987490302286774272","media_url_https":"https://pbs.twimg.com/media/G5T75lZWQAADMbh.jpg","type":"photo","url":"https://t.co/teKBoKJ5wh","ext_media_availability":{"status":"Available"},"features":{"large":{"faces":[{"x":673,"y":165,"h":37,"w":37},{"x":498,"y":463,"h":42,"w":42}]},"medium":{"faces":[{"x":673,"y":165,"h":37,"w":37},{"x":498,"y":463,"h":42,"w":42}]},"small":{"faces":[{"x":446,"y":109,"h":24,"w":24},{"x":330,"y":307,"h":27,"w":27}]},"orig":{"faces":[{"x":673,"y":165,"h":37,"w":37},{"x":498,"y":463,"h":42,"w":42}]}},"sizes":{"large":{"h":581,"w":1024,"resize":"fit"},"medium":{"h":581,"w":1024,"resize":"fit"},"small":{"h":386,"w":680,"resize":"fit"},"thumb":{"h":150,"w":150,"resize":"crop"}},"original_info":{"height":581,"width":1024,"focus_rects":[{"x":0,"y":0,"w":1024,"h":573},{"x":0,"y":0,"w":581,"h":581},{"x":0,"y":0,"w":510,"h":581},{"x":84,"y":0,"w":291,"h":581},{"x":0,"y":0,"w":1024,"h":581}]},"allow_download_status":{"allow_download":true},"media_results":{"result":{"media_key":"3_1987490302286774272"}}}],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987480365682864323","url":"https://x.com/rz2zdfhgft/status/1987480365682864323","twitterUrl":"https://twitter.com/rz2zdfhgft/status/1987480365682864323","text":"@MAGA_FORCE_ She did very well in politics. She looked out for herself not for us","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":0,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 11:20:19 +0000 2025","lang":"en","bookmarkCount":0,"isReply":true,"inReplyToId":"1987122950839955506","conversationId":"1987122950839955506","displayTextRange":[13,81],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"rz2zdfhgft","url":"https://x.com/rz2zdfhgft","twitterUrl":"https://twitter.com/rz2zdfhgft","id":"1586050999743037441","name":"Little old me","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1861429247677472768/TJHJKSFi_normal.jpg","coverPicture":"","description":"","location":"Rockledge, FL","followers":0,"following":0,"status":"","canDm":false,"canMediaTag":true,"createdAt":"Fri Oct 28 17:44:28 +0000 2022","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[{"id_str":"1961863329187770369","name":"MAGA FORCE","screen_name":"MAGA_FORCE_","indices":[0,12]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987478656055120056","url":"https://x.com/AnnaIreland17/status/1987478656055120056","twitterUrl":"https://twitter.com/AnnaIreland17/status/1987478656055120056","text":"@boggywood So he was jailed for something that was never a criminal case in the first place. How the arm of playing politics can twist the laws against anyone.","source":"Twitter for iPhone","retweetCount":1,"replyCount":1,"likeCount":1,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 11:13:31 +0000 2025","lang":"en","bookmarkCount":0,"isReply":true,"inReplyToId":"1987463134291058971","conversationId":"1987463134291058971","displayTextRange":[11,159],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"AnnaIreland17","url":"https://x.com/AnnaIreland17","twitterUrl":"https://twitter.com/AnnaIreland17","id":"1445174549176365064","name":"Anna Ireland","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1641641291380408320/GYnysBX3_normal.jpg","coverPicture":"","description":"","location":"United States/United Kingdom ","followers":0,"following":0,"status":"","canDm":true,"canMediaTag":true,"createdAt":"Mon Oct 04 23:51:21 +0000 2021","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[{"id_str":"128861308","name":"Helen O'Driscoll","screen_name":"boggywood","indices":[0,10]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987458512276865099","url":"https://x.com/moondelightmb/status/1987458512276865099","twitterUrl":"https://twitter.com/moondelightmb/status/1987458512276865099","text":"hey I'm new to #booktwt and I'm looking for moots.\n\n• interests: music, books, poetry, politics, history, interior design, coffee, tea, plants, movies/shows, comics \n• age: 25 \n• pronouns: she/her\n\ni follow back &#127850;&#127810;&#129294;","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":9,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 09:53:29 +0000 2025","lang":"en","bookmarkCount":0,"isReply":false,"inReplyToId":null,"conversationId":"1987458512276865099","displayTextRange":[0,215],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"moondelightmb","url":"https://x.com/moondelightmb","twitterUrl":"https://twitter.com/moondelightmb","id":"1815530081260908544","name":"Liz ☕&#128214;☭","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1986202843821363201/v70Yr5JJ_normal.jpg","coverPicture":"","description":"","location":"","followers":0,"following":0,"status":"","canDm":false,"canMediaTag":false,"createdAt":"Mon Jul 22 23:31:40 +0000 2024","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[{"indices":[15,23],"text":"booktwt"}],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987455932146565228","url":"https://x.com/ketiiii0000/status/1987455932146565228","twitterUrl":"https://twitter.com/ketiiii0000/status/1987455932146565228","text":"I truly can’t escape them even in a serious video essay on politics https://t.co/pqiPZvHmLn","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":13,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 09:43:14 +0000 2025","lang":"en","bookmarkCount":4,"isReply":false,"inReplyToId":null,"conversationId":"1987455932146565228","displayTextRange":[0,67],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"ketiiii0000","url":"https://x.com/ketiiii0000","twitterUrl":"https://twitter.com/ketiiii0000","id":"1964809549459927040","name":"K","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1969265177909436416/-cUPUnoQ_normal.jpg","coverPicture":"","description":"","location":"","followers":0,"following":0,"status":"","canDm":true,"canMediaTag":true,"createdAt":"Sun Sep 07 21:55:01 +0000 2025","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{"media":[{"display_url":"pic.twitter.com/pqiPZvHmLn","expanded_url":"https://twitter.com/ketiiii0000/status/1987455932146565228/photo/1","id_str":"1987455928149385216","indices":[68,91],"media_key":"3_1987455928149385216","media_url_https":"https://pbs.twimg.com/media/G5TcovwWoAAHkrG.jpg","type":"photo","url":"https://t.co/pqiPZvHmLn","ext_media_availability":{"status":"Available"},"features":{"large":{"faces":[{"x":416,"y":204,"h":134,"w":134}]},"medium":{"faces":[{"x":278,"y":136,"h":89,"w":89}]},"small":{"faces":[{"x":157,"y":77,"h":50,"w":50}]},"orig":{"faces":[{"x":416,"y":204,"h":134,"w":134}]}},"sizes":{"large":{"h":1792,"w":828,"resize":"fit"},"medium":{"h":1200,"w":554,"resize":"fit"},"small":{"h":680,"w":314,"resize":"fit"},"thumb":{"h":150,"w":150,"resize":"crop"}},"original_info":{"height":1792,"width":828,"focus_rects":[{"x":0,"y":618,"w":828,"h":464},{"x":0,"y":436,"w":828,"h":828},{"x":0,"y":378,"w":828,"h":944},{"x":0,"y":22,"w":828,"h":1656},{"x":0,"y":0,"w":828,"h":1792}]},"allow_download_status":{"allow_download":true},"media_results":{"result":{"media_key":"3_1987455928149385216"}}}]},"card":null,"place":{},"entities":{"hashtags":[],"media":[{"display_url":"pic.twitter.com/pqiPZvHmLn","expanded_url":"https://twitter.com/ketiiii0000/status/1987455932146565228/photo/1","id_str":"1987455928149385216","indices":[68,91],"media_key":"3_1987455928149385216","media_url_https":"https://pbs.twimg.com/media/G5TcovwWoAAHkrG.jpg","type":"photo","url":"https://t.co/pqiPZvHmLn","ext_media_availability":{"status":"Available"},"features":{"large":{"faces":[{"x":416,"y":204,"h":134,"w":134}]},"medium":{"faces":[{"x":278,"y":136,"h":89,"w":89}]},"small":{"faces":[{"x":157,"y":77,"h":50,"w":50}]},"orig":{"faces":[{"x":416,"y":204,"h":134,"w":134}]}},"sizes":{"large":{"h":1792,"w":828,"resize":"fit"},"medium":{"h":1200,"w":554,"resize":"fit"},"small":{"h":680,"w":314,"resize":"fit"},"thumb":{"h":150,"w":150,"resize":"crop"}},"original_info":{"height":1792,"width":828,"focus_rects":[{"x":0,"y":618,"w":828,"h":464},{"x":0,"y":436,"w":828,"h":828},{"x":0,"y":378,"w":828,"h":944},{"x":0,"y":22,"w":828,"h":1656},{"x":0,"y":0,"w":828,"h":1792}]},"allow_download_status":{"allow_download":true},"media_results":{"result":{"media_key":"3_1987455928149385216"}}}],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987436753632793048","url":"https://x.com/cogan_ayhan/status/1987436753632793048","twitterUrl":"https://twitter.com/cogan_ayhan/status/1987436753632793048","text":"&#128302; Step into the world of Pollarea and discover where prediction meets excitement.\n\n⚖️ Politics\n&#128176; Finance\n&#127936; Sports\n&#129302; Artificial Intelligence\nand more, and\nget the chance to join a new adventure in each category.\n\nPlay logically. Predict boldly. Get the chance to win big.\n\n&#128073; https://t.co/CCoFeYKd2V\n#Pollarea #PredictionMarket #ArtificialIntelligence #Web3 #PlayToWin #Fun","source":"Twitter for iPhone","retweetCount":1,"replyCount":8,"likeCount":8,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 08:27:01 +0000 2025","lang":"en","bookmarkCount":0,"isReply":false,"inReplyToId":null,"conversationId":"1987436753632793048","displayTextRange":[0,274],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"cogan_ayhan","url":"https://x.com/cogan_ayhan","twitterUrl":"https://twitter.com/cogan_ayhan","id":"1072173683215605760","name":"Ayhan","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1964994182432305152/jl9kfeuN_normal.jpg","coverPicture":"","description":"","location":"","followers":0,"following":0,"status":"","canDm":true,"canMediaTag":false,"createdAt":"Mon Dec 10 16:58:20 +0000 2018","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{"media":[{"display_url":"pic.twitter.com/QIlI0dRhne","expanded_url":"https://twitter.com/cogan_ayhan/status/1987436753632793048/photo/1","id_str":"1987436742530551808","indices":[275,298],"media_key":"3_1987436742530551808","media_url_https":"https://pbs.twimg.com/media/G5TLL_wX0AApWkU.jpg","type":"photo","url":"https://t.co/QIlI0dRhne","ext_media_availability":{"status":"Available"},"features":{"large":{"faces":[{"x":593,"y":717,"h":63,"w":63}]},"medium":{"faces":[{"x":555,"y":672,"h":59,"w":59}]},"small":{"faces":[{"x":315,"y":380,"h":33,"w":33}]},"orig":{"faces":[{"x":593,"y":717,"h":63,"w":63}]}},"sizes":{"large":{"h":853,"w":1280,"resize":"fit"},"medium":{"h":800,"w":1200,"resize":"fit"},"small":{"h":453,"w":680,"resize":"fit"},"thumb":{"h":150,"w":150,"resize":"crop"}},"original_info":{"height":853,"width":1280,"focus_rects":[{"x":0,"y":136,"w":1280,"h":717},{"x":214,"y":0,"w":853,"h":853},{"x":266,"y":0,"w":748,"h":853},{"x":427,"y":0,"w":427,"h":853},{"x":0,"y":0,"w":1280,"h":853}]},"allow_download_status":{"allow_download":true},"media_results":{"result":{"media_key":"3_1987436742530551808"}}}]},"card":null,"place":{},"entities":{"hashtags":[{"indices":[298,307],"text":"Pollarea"},{"indices":[308,325],"text":"PredictionMarket"},{"indices":[326,349],"text":"ArtificialIntelligence"},{"indices":[350,355],"text":"Web3"},{"indices":[356,366],"text":"PlayToWin"},{"indices":[367,371],"text":"Fun"}],"symbols":[],"urls":[{"display_url":"pollarea.com","expanded_url":"http://pollarea.com","url":"https://t.co/CCoFeYKd2V","indices":[274,297]}],"user_mentions":[]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987427127286006015","url":"https://x.com/StartusharMr/status/1987427127286006015","twitterUrl":"https://twitter.com/StartusharMr/status/1987427127286006015","text":"Or reduce their scope of impact. Carry your politics in your village or better in your family. Keep others out. #decentralize.","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":2,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 07:48:46 +0000 2025","lang":"en","bookmarkCount":0,"isReply":false,"inReplyToId":null,"conversationId":"1987427127286006015","displayTextRange":[0,126],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"StartusharMr","url":"https://x.com/StartusharMr","twitterUrl":"https://twitter.com/StartusharMr","id":"815794878282014720","name":"T.S.R Kaushik","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1972864923546869761/qNe0xkq1_normal.jpg","coverPicture":"","description":"","location":"","followers":0,"following":0,"status":"","canDm":true,"canMediaTag":true,"createdAt":"Mon Jan 02 05:40:30 +0000 2017","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[{"indices":[112,125],"text":"decentralize"}],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987423329376931842","url":"https://x.com/nancmc111/status/1987423329376931842","twitterUrl":"https://twitter.com/nancmc111/status/1987423329376931842","text":"@Fchatban When I say anything about Politics, they cut my conversations &#128587;&#127996;‍♀️&#129394;","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":0,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 07:33:40 +0000 2025","lang":"en","bookmarkCount":0,"isReply":true,"inReplyToId":"1987409594201559402","conversationId":"1987409594201559402","displayTextRange":[10,78],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"nancmc111","url":"https://x.com/nancmc111","twitterUrl":"https://twitter.com/nancmc111","id":"826970231071453185","name":"Nancy","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1658230706672214018/GPEgMJks_normal.jpg","coverPicture":"","description":"","location":"","followers":0,"following":0,"status":"","canDm":true,"canMediaTag":true,"createdAt":"Thu Feb 02 01:47:22 +0000 2017","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[{"id_str":"1849961539031502848","name":"Chatban","screen_name":"Fchatban","indices":[0,9]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987414624111894566","url":"https://x.com/supercycle202/status/1987414624111894566","twitterUrl":"https://twitter.com/supercycle202/status/1987414624111894566","text":"@drymoulas28479 @Polymarket @PolymarketBuild Unreal @Polymarket tech \n\nInterface is the cleanest i’ve seen, works a dream  \n\nDesktop / mobile versions \n\nCan bet on sports, crypto, politics within seconds  \n\nUnder 300k market cap honestly would not look out of place at 30 million","source":"Twitter for iPhone","retweetCount":0,"replyCount":1,"likeCount":1,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 06:59:05 +0000 2025","lang":"en","bookmarkCount":0,"isReply":true,"inReplyToId":"1987406351610331223","conversationId":"1987406351610331223","displayTextRange":[45,279],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"supercycle202","url":"https://x.com/supercycle202","twitterUrl":"https://twitter.com/supercycle202","id":"1859331778743308288","name":"Crypto Vista","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1889421977628123136/B9o65smo_normal.jpg","coverPicture":"","description":"","location":"","followers":0,"following":0,"status":"","canDm":true,"canMediaTag":true,"createdAt":"Wed Nov 20 20:23:49 +0000 2024","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[{"id_str":"1839687387531837440","name":"Johnny Marine","screen_name":"drymoulas28479","indices":[0,15]},{"id_str":"1261335549215989760","name":"Polymarket","screen_name":"Polymarket","indices":[16,27]},{"id_str":"1965781090573893632","name":"Polymarket Builders","screen_name":"PolymarketBuild","indices":[28,44]},{"id_str":"1261335549215989760","name":"Polymarket","screen_name":"Polymarket","indices":[52,63]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987407253046006207","url":"https://x.com/awayemicheal/status/1987407253046006207","twitterUrl":"https://twitter.com/awayemicheal/status/1987407253046006207","text":"@PoliticsKranti @TheJonyVerma Fb","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":0,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 06:29:48 +0000 2025","lang":"und","bookmarkCount":0,"isReply":true,"inReplyToId":"1987392508444426733","conversationId":"1987388305198227695","displayTextRange":[30,32],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"awayemicheal","url":"https://x.com/awayemicheal","twitterUrl":"https://twitter.com/awayemicheal","id":"281655777","name":"Awayem™️","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1926372796902387713/uIkjfm5y_normal.jpg","coverPicture":"","description":"","location":"","followers":0,"following":0,"status":"","canDm":true,"canMediaTag":true,"createdAt":"Wed Apr 13 18:12:10 +0000 2011","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[{"id_str":"1973028958146072576","name":"Politics Kranti","screen_name":"PoliticsKranti","indices":[0,15]},{"id_str":"2698895709","name":"Adv Jony Ambedkarwadi &#127470;&#127475;","screen_name":"TheJonyVerma","indices":[16,29]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987393052181471576","url":"https://x.com/Priya_Upadhyay_/status/1987393052181471576","twitterUrl":"https://twitter.com/Priya_Upadhyay_/status/1987393052181471576","text":"@PoliticsKranti @TheJonyVerma let's grow","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":3,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 05:33:22 +0000 2025","lang":"en","bookmarkCount":0,"isReply":true,"inReplyToId":"1987392508444426733","conversationId":"1987388305198227695","displayTextRange":[30,40],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"Priya_Upadhyay_","url":"https://x.com/Priya_Upadhyay_","twitterUrl":"https://twitter.com/Priya_Upadhyay_","id":"1766712913731969028","name":"priya upadhyay","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1952985640632561664/w7czD-mA_normal.jpg","coverPicture":"","description":"","location":"","followers":0,"following":0,"status":"","canDm":false,"canMediaTag":true,"createdAt":"Sun Mar 10 06:29:42 +0000 2024","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[{"id_str":"1973028958146072576","name":"Politics Kranti","screen_name":"PoliticsKranti","indices":[0,15]},{"id_str":"2698895709","name":"Adv Jony Ambedkarwadi &#127470;&#127475;","screen_name":"TheJonyVerma","indices":[16,29]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987389291421438426","url":"https://x.com/voiceofrabbis/status/1987389291421438426","twitterUrl":"https://twitter.com/voiceofrabbis/status/1987389291421438426","text":"He came with an open mind.\nHe left with a pit in his stomach, because he confused Israel’s foreign politics with city government.\n\nNew York isn’t run by opinions on Israel; it’s run by its mayor and city workers.\n\nAnd by the way,  Jews don’t fight back.\n \nWe’re loyal citizens wherever we live.\n\n@ZohranKMamdani \nSource @TorahJudaism @authenttorahjew","source":"Twitter for iPhone","retweetCount":17,"replyCount":1,"likeCount":56,"quoteCount":1,"viewCount":0,"createdAt":"Sun Nov 09 05:18:25 +0000 2025","lang":"en","bookmarkCount":1,"isReply":false,"inReplyToId":null,"conversationId":"1987389291421438426","displayTextRange":[0,277],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"voiceofrabbis","url":"https://x.com/voiceofrabbis","twitterUrl":"https://twitter.com/voiceofrabbis","id":"1600396060471459840","name":"Voice of Rabbis","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1934393111213441024/B0zHkSox_normal.png","coverPicture":"","description":"","location":"United States ","followers":0,"following":0,"status":"","canDm":false,"canMediaTag":true,"createdAt":"Wed Dec 07 07:45:46 +0000 2022","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"urls":[],"user_mentions":[{"id_str":"266980765","name":"Zohran Kwame Mamdani","screen_name":"ZohranKMamdani","indices":[296,311]},{"id_str":"515971114","name":"Torah Judaism","screen_name":"TorahJudaism","indices":[320,333]},{"id_str":"1758169875548135424","name":"Authentic Jew","screen_name":"authenttorahjew","indices":[334,350]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987388711047139812","url":"https://x.com/ArkFrancis2/status/1987388711047139812","twitterUrl":"https://twitter.com/ArkFrancis2/status/1987388711047139812","text":"Big moves,  @trylimitless isn’t slowing down.\n\nAfter China, Korea’s now live with KRW and politics markets, showing how fast prediction markets are going global. \n\nAsia’s heating up… wonder which region gets unlocked next. \n\n#TryLimitless https://t.co/9tDxfBxhao","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":3,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 05:16:07 +0000 2025","lang":"en","bookmarkCount":0,"isReply":false,"inReplyToId":null,"conversationId":"1987388711047139812","displayTextRange":[0,238],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"ArkFrancis2","url":"https://x.com/ArkFrancis2","twitterUrl":"https://twitter.com/ArkFrancis2","id":"800815153679732736","name":"Ark web3","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1973033248545550336/P-JgtCuh_normal.jpg","coverPicture":"","description":"","location":"Nigeria","followers":0,"following":0,"status":"","canDm":false,"canMediaTag":true,"createdAt":"Mon Nov 21 21:36:25 +0000 2016","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{"media":[{"display_url":"pic.twitter.com/9tDxfBxhao","expanded_url":"https://twitter.com/ArkFrancis2/status/1987388711047139812/photo/1","id_str":"1987388703610736640","indices":[239,262],"media_key":"3_1987388703610736640","media_url_https":"https://pbs.twimg.com/media/G5Sffw1XkAAxPhy.jpg","type":"photo","url":"https://t.co/9tDxfBxhao","ext_media_availability":{"status":"Available"},"features":{"large":{"faces":[]},"medium":{"faces":[]},"small":{"faces":[]},"orig":{"faces":[]}},"sizes":{"large":{"h":1227,"w":1230,"resize":"fit"},"medium":{"h":1197,"w":1200,"resize":"fit"},"small":{"h":678,"w":680,"resize":"fit"},"thumb":{"h":150,"w":150,"resize":"crop"}},"original_info":{"height":1227,"width":1230,"focus_rects":[{"x":0,"y":0,"w":1230,"h":689},{"x":2,"y":0,"w":1227,"h":1227},{"x":77,"y":0,"w":1076,"h":1227},{"x":308,"y":0,"w":614,"h":1227},{"x":0,"y":0,"w":1230,"h":1227}]},"media_results":{"result":{"media_key":"3_1987388703610736640"}}}]},"card":null,"place":{},"entities":{"hashtags":[{"indices":[225,238],"text":"TryLimitless"}],"media":[{"display_url":"pic.twitter.com/9tDxfBxhao","expanded_url":"https://twitter.com/ArkFrancis2/status/1987388711047139812/photo/1","id_str":"1987388703610736640","indices":[239,262],"media_key":"3_1987388703610736640","media_url_https":"https://pbs.twimg.com/media/G5Sffw1XkAAxPhy.jpg","type":"photo","url":"https://t.co/9tDxfBxhao","ext_media_availability":{"status":"Available"},"features":{"large":{"faces":[]},"medium":{"faces":[]},"small":{"faces":[]},"orig":{"faces":[]}},"sizes":{"large":{"h":1227,"w":1230,"resize":"fit"},"medium":{"h":1197,"w":1200,"resize":"fit"},"small":{"h":678,"w":680,"resize":"fit"},"thumb":{"h":150,"w":150,"resize":"crop"}},"original_info":{"height":1227,"width":1230,"focus_rects":[{"x":0,"y":0,"w":1230,"h":689},{"x":2,"y":0,"w":1227,"h":1227},{"x":77,"y":0,"w":1076,"h":1227},{"x":308,"y":0,"w":614,"h":1227},{"x":0,"y":0,"w":1230,"h":1227}]},"media_results":{"result":{"media_key":"3_1987388703610736640"}}}],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[{"id_str":"1396594850598957061","name":"Limitless","screen_name":"trylimitless","indices":[12,25]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null},{"type":"tweet","id":"1987388630822756474","url":"https://x.com/fnswae/status/1987388630822756474","twitterUrl":"https://twitter.com/fnswae/status/1987388630822756474","text":"@failedxpfarm Nigga we all civilians we shouldn’t get into street politics &#128128;&#128128;&#128128;","source":"Twitter for iPhone","retweetCount":0,"replyCount":0,"likeCount":0,"quoteCount":0,"viewCount":0,"createdAt":"Sun Nov 09 05:15:48 +0000 2025","lang":"en","bookmarkCount":0,"isReply":true,"inReplyToId":"1987353918167523446","conversationId":"1987353501836480940","displayTextRange":[14,78],"inReplyToUserId":null,"inReplyToUsername":null,"author":{"type":"user","userName":"fnswae","url":"https://x.com/fnswae","twitterUrl":"https://twitter.com/fnswae","id":"1371242731788513282","name":"swae","isVerified":false,"isBlueVerified":false,"verifiedType":null,"profilePicture":"https://pbs.twimg.com/profile_images/1839462151918125056/QU2PX6nW_normal.jpg","coverPicture":"","description":"","location":"","followers":0,"following":0,"status":"","canDm":false,"canMediaTag":false,"createdAt":"Sun Mar 14 23:32:09 +0000 2021","entities":{"description":{"urls":[]},"url":{}},"fastFollowersCount":0,"favouritesCount":0,"hasCustomTimelines":true,"isTranslator":false,"mediaCount":0,"statusesCount":0,"withheldInCountries":[],"affiliatesHighlightedLabel":{},"possiblySensitive":false,"pinnedTweetIds":[],"profile_bio":{},"isAutomated":false,"automatedBy":null},"extendedEntities":{},"card":null,"place":{},"entities":{"hashtags":[],"symbols":[],"timestamps":[],"urls":[],"user_mentions":[{"id_str":"1974279019232149504","name":"Liar","screen_name":"failedxpfarm","indices":[0,13]}]},"quoted_tweet":null,"retweeted_tweet":null,"isLimitedReply":false,"article":null}],"has_next_page":true,"next_cursor":"DAAHCgABG5UPxNS__-wLAAIAAAAUV3pFM05qSTJOalV6TkRnd01EQmQIAAMAAAACAAA"}</value>
+      </property>
+      <property>
+        <name>character-set</name>
+        <value>UTF-8</value>
+      </property>
+      <property>
+        <name>mime-type</name>
+      </property>
+    </processor>
+    <processor>
+      <id>87993408-019a-1000-81fc-6a0cd080b3a2</id>
+      <name>SplitJson</name>
+      <position x="2200.0" y="-32.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.SplitJson</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>JsonPath Expression</name>
+        <value>$.tweets</value>
+      </property>
+      <property>
+        <name>Null Value Representation</name>
+        <value>empty string</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+      <autoTerminatedRelationship>original</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>87a53368-019a-1000-ae95-1f4056f5a835</id>
+      <name>ConvertRecord</name>
+      <position x="2200.0" y="376.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.ConvertRecord</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>record-reader</name>
+        <value>876de9d6-019a-1000-9e4d-c2f2ae180d79</value>
+      </property>
+      <property>
+        <name>record-writer</name>
+        <value>8e059e3a-019a-1000-f871-fa4093fdfa95</value>
+      </property>
+      <property>
+        <name>include-zero-record-flowfiles</name>
+        <value>true</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>87603254-019a-1000-7db5-e6bc0cf27041</id>
+      <name>EvaluateJsonPath</name>
+      <position x="464.0" y="376.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.EvaluateJsonPath</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Destination</name>
+        <value>flowfile-attribute</value>
+      </property>
+      <property>
+        <name>Return Type</name>
+        <value>auto-detect</value>
+      </property>
+      <property>
+        <name>Path Not Found Behavior</name>
+        <value>ignore</value>
+      </property>
+      <property>
+        <name>Null Value Representation</name>
+        <value>empty string</value>
+      </property>
+      <property>
+        <name>text</name>
+        <value>$.commit.record.text</value>
+      </property>
+      <property>
+        <name>timestamp</name>
+        <value>$.commit.record.createdAt</value>
+      </property>
+      <property>
+        <name>did</name>
+        <value>$.did</value>
+      </property>
+      <property>
+        <name>language</name>
+        <value>$.commit.record.langs[0]</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+      <autoTerminatedRelationship>unmatched</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>8765e8d3-019a-1000-99b0-2358248b829e</id>
+      <name>AttributesToJSON</name>
+      <position x="456.0" y="560.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.AttributesToJSON</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-standard-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Attributes List</name>
+        <value>did,text,language,timestamp</value>
+      </property>
+      <property>
+        <name>attributes-to-json-regex</name>
+      </property>
+      <property>
+        <name>Destination</name>
+        <value>flowfile-content</value>
+      </property>
+      <property>
+        <name>Include Core Attributes</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>Null Value</name>
+        <value>false</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>9c56a482-019a-1000-380b-15561743a79e</id>
+      <name>PutS3Object</name>
+      <position x="2208.0" y="576.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.aws.s3.PutS3Object</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-aws-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Object Key</name>
+        <value>${s3.key.prefix}${s3.filename}</value>
+      </property>
+      <property>
+        <name>Bucket</name>
+        <value>bigdata-bluesky-sentiment</value>
+      </property>
+      <property>
+        <name>Content Type</name>
+      </property>
+      <property>
+        <name>Content Disposition</name>
+      </property>
+      <property>
+        <name>Cache Control</name>
+      </property>
+      <property>
+        <name>Access Key</name>
+        <value>enc{21581dca00b68af4c79a98cb5d27dcba3a65293b8acb94faed1b6a0238b18cdaa8cfd116aedc064f3116ff538b1fd627405c4f80}</value>
+      </property>
+      <property>
+        <name>Secret Key</name>
+        <value>enc{84e6fb0ae9da75b0121923c14ec7c15fec7ffaf7cbaf2cb7bc7fc5ab8b74e8cb909be7e75ad97b4c57d27df322b6bb7ee226c128b5c324080f144a0b8481b6abadb15b330c0bddd7}</value>
+      </property>
+      <property>
+        <name>Credentials File</name>
+      </property>
+      <property>
+        <name>AWS Credentials Provider service</name>
+      </property>
+      <property>
+        <name>s3-object-tags-prefix</name>
+      </property>
+      <property>
+        <name>s3-object-remove-tags-prefix</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>Storage Class</name>
+        <value>Standard</value>
+      </property>
+      <property>
+        <name>Region</name>
+        <value>us-east-1</value>
+      </property>
+      <property>
+        <name>Communications Timeout</name>
+        <value>30 secs</value>
+      </property>
+      <property>
+        <name>Expiration Time Rule</name>
+      </property>
+      <property>
+        <name>FullControl User List</name>
+        <value>${s3.permissions.full.users}</value>
+      </property>
+      <property>
+        <name>Read Permission User List</name>
+        <value>${s3.permissions.read.users}</value>
+      </property>
+      <property>
+        <name>Write Permission User List</name>
+        <value>${s3.permissions.write.users}</value>
+      </property>
+      <property>
+        <name>Read ACL User List</name>
+        <value>${s3.permissions.readacl.users}</value>
+      </property>
+      <property>
+        <name>Write ACL User List</name>
+        <value>${s3.permissions.writeacl.users}</value>
+      </property>
+      <property>
+        <name>Owner</name>
+        <value>${s3.owner}</value>
+      </property>
+      <property>
+        <name>canned-acl</name>
+        <value>${s3.permissions.cannedacl}</value>
+      </property>
+      <property>
+        <name>SSL Context Service</name>
+      </property>
+      <property>
+        <name>Endpoint Override URL</name>
+      </property>
+      <property>
+        <name>Signer Override</name>
+        <value>Default Signature</value>
+      </property>
+      <property>
+        <name>Multipart Threshold</name>
+        <value>5 GB</value>
+      </property>
+      <property>
+        <name>Multipart Part Size</name>
+        <value>5 GB</value>
+      </property>
+      <property>
+        <name>Multipart Upload AgeOff Interval</name>
+        <value>60 min</value>
+      </property>
+      <property>
+        <name>Multipart Upload Max Age Threshold</name>
+        <value>7 days</value>
+      </property>
+      <property>
+        <name>s3-temporary-directory-multipart</name>
+        <value>${java.io.tmpdir}</value>
+      </property>
+      <property>
+        <name>server-side-encryption</name>
+        <value>None</value>
+      </property>
+      <property>
+        <name>encryption-service</name>
+      </property>
+      <property>
+        <name>use-chunked-encoding</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>use-path-style-access</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>proxy-configuration-service</name>
+      </property>
+      <property>
+        <name>Proxy Host</name>
+      </property>
+      <property>
+        <name>Proxy Host Port</name>
+      </property>
+      <property>
+        <name>proxy-user-name</name>
+      </property>
+      <property>
+        <name>proxy-user-password</name>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>9c562bed-019a-1000-3d05-f1e6a0e4bd44</id>
+      <name>PublishKafka_2_6</name>
+      <position x="1720.0" y="792.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.kafka.pubsub.PublishKafka_2_6</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-kafka-2-6-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>bootstrap.servers</name>
+        <value>54.226.214.16:9092</value>
+      </property>
+      <property>
+        <name>security.protocol</name>
+        <value>PLAINTEXT</value>
+      </property>
+      <property>
+        <name>sasl.mechanism</name>
+        <value>GSSAPI</value>
+      </property>
+      <property>
+        <name>sasl.kerberos.service.name</name>
+      </property>
+      <property>
+        <name>kerberos-credentials-service</name>
+      </property>
+      <property>
+        <name>sasl.kerberos.principal</name>
+      </property>
+      <property>
+        <name>sasl.kerberos.keytab</name>
+      </property>
+      <property>
+        <name>sasl.username</name>
+      </property>
+      <property>
+        <name>sasl.password</name>
+      </property>
+      <property>
+        <name>sasl.token.auth</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>ssl.context.service</name>
+      </property>
+      <property>
+        <name>topic</name>
+        <value>fire</value>
+      </property>
+      <property>
+        <name>acks</name>
+        <value>0</value>
+      </property>
+      <property>
+        <name>Failure Strategy</name>
+        <value>Route to Failure</value>
+      </property>
+      <property>
+        <name>use-transactions</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>transactional-id-prefix</name>
+      </property>
+      <property>
+        <name>attribute-name-regex</name>
+      </property>
+      <property>
+        <name>message-header-encoding</name>
+        <value>UTF-8</value>
+      </property>
+      <property>
+        <name>kafka-key</name>
+      </property>
+      <property>
+        <name>key-attribute-encoding</name>
+        <value>utf-8</value>
+      </property>
+      <property>
+        <name>message-demarcator</name>
+      </property>
+      <property>
+        <name>max.request.size</name>
+        <value>1 MB</value>
+      </property>
+      <property>
+        <name>ack.wait.time</name>
+        <value>5 secs</value>
+      </property>
+      <property>
+        <name>max.block.ms</name>
+        <value>5 sec</value>
+      </property>
+      <property>
+        <name>partitioner.class</name>
+        <value>org.apache.kafka.clients.producer.internals.DefaultPartitioner</value>
+      </property>
+      <property>
+        <name>partition</name>
+      </property>
+      <property>
+        <name>compression.type</name>
+        <value>none</value>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>9d71b211-019a-1000-a670-b39f52a5e329</id>
+      <name>UpdateAttribute</name>
+      <position x="936.0" y="576.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.attributes.UpdateAttribute</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-update-attribute-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Delete Attributes Expression</name>
+      </property>
+      <property>
+        <name>Store State</name>
+        <value>Do not store state</value>
+      </property>
+      <property>
+        <name>Stateful Variables Initial Value</name>
+      </property>
+      <property>
+        <name>canonical-value-lookup-cache-size</name>
+        <value>100</value>
+      </property>
+      <property>
+        <name>s3.key.prefix</name>
+        <value>bluesky_raw/ingestion_date=${now():format('yyyy-MM-dd')}/</value>
+      </property>
+      <property>
+        <name>s3.filename</name>
+        <value>${now():format('yyyy-MM-dd')}-${uuid}.parquet</value>
+      </property>
+    </processor>
+    <processor>
+      <id>87764504-019a-1000-c5bd-da3f0be138ae</id>
+      <name>UpdateAttribute</name>
+      <position x="896.0" y="-16.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.attributes.UpdateAttribute</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-update-attribute-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <executionNode>ALL</executionNode>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Delete Attributes Expression</name>
+      </property>
+      <property>
+        <name>Store State</name>
+        <value>Do not store state</value>
+      </property>
+      <property>
+        <name>Stateful Variables Initial Value</name>
+      </property>
+      <property>
+        <name>canonical-value-lookup-cache-size</name>
+        <value>100</value>
+      </property>
+      <property>
+        <name>mime.type</name>
+        <value>application/json</value>
+      </property>
+    </processor>
+    <connection>
+      <id>875c4568-019a-1000-9e5e-3cb6b5ff05a9</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>875c2446-019a-1000-8914-697d7daab28f</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>87603254-019a-1000-7db5-e6bc0cf27041</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>87639a49-019a-1000-b679-de815ecf36ab</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>87603254-019a-1000-7db5-e6bc0cf27041</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>8765e8d3-019a-1000-99b0-2358248b829e</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>matched</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>8e334857-019a-1000-d783-23b51944189a</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>8e33145e-019a-1000-1c4a-2e0b5acd0fc5</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>7f758b9b-019a-1000-6e50-dc836ced562a</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>87439101-019a-1000-66c9-255ce4c2e3ad</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>87433220-019a-1000-4a08-6423869ecc4f</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>879bfe31-019a-1000-66fb-30bf58fdfe97</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>split</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>87a57579-019a-1000-3126-278130e60d0d</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>87a53368-019a-1000-ae95-1f4056f5a835</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>9d532f7b-019a-1000-6707-c3f42d76e9e1</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>8776d820-019a-1000-dd75-4006e0b6609c</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>87764504-019a-1000-c5bd-da3f0be138ae</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>876c9725-019a-1000-6d93-b20232b7784d</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>87661fa9-019a-1000-4d73-1c2cc1210641</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>8765e8d3-019a-1000-99b0-2358248b829e</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>8e33145e-019a-1000-1c4a-2e0b5acd0fc5</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>9c566b9b-019a-1000-c0a4-1de531e957b7</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>9c562bed-019a-1000-3d05-f1e6a0e4bd44</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>7f7bcbde-019a-1000-cc2d-b07834605dc6</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>879ecdb2-019a-1000-4bc5-f266905ca4e9</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>879ea1f3-019a-1000-116b-18e46f3f9bfc</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>9c562bed-019a-1000-3d05-f1e6a0e4bd44</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>9d57ce99-019a-1000-2843-813a0d442470</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>9d532f7b-019a-1000-6707-c3f42d76e9e1</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>9c56a482-019a-1000-380b-15561743a79e</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>87437e9a-019a-1000-09b7-ed453231f23e</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>8741e461-019a-1000-3aec-2b41587dc995</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>87433220-019a-1000-4a08-6423869ecc4f</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>Response</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>9c570bd1-019a-1000-4ee7-8dd18f1168d0</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>9c56a482-019a-1000-380b-15561743a79e</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>7f7bcbde-019a-1000-cc2d-b07834605dc6</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>877413ca-019a-1000-b1c9-46e1a3003ca5</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>8746a4ad-019a-1000-b7a3-7e417296c4e0</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>87764504-019a-1000-c5bd-da3f0be138ae</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>text message</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>87996ae5-019a-1000-c84f-664e6a8d5984</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>87993408-019a-1000-81fc-6a0cd080b3a2</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>87a3819e-019a-1000-8cbb-82ec16850c11</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>split</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>ad6cea53-019a-1000-1eca-b2bbf12de53b</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>ad6a25ee-019a-1000-c9d1-70e498edb524</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>7f758b9b-019a-1000-6e50-dc836ced562a</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>ad6d2751-019a-1000-e345-e27825a1ea2c</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>9d71b211-019a-1000-a670-b39f52a5e329</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>ad6a25ee-019a-1000-c9d1-70e498edb524</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>879c4854-019a-1000-98a2-8cc377fc4db2</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>879bfe31-019a-1000-66fb-30bf58fdfe97</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>879ea1f3-019a-1000-116b-18e46f3f9bfc</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>matched</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>876d4618-019a-1000-1b13-0a2a08da664c</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>876c9725-019a-1000-6d93-b20232b7784d</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>876d0832-019a-1000-0e97-30055053c266</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>merged</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>8deff3c1-019a-1000-42c8-8de4f163054f</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>8def7745-019a-1000-121c-0ba8d82d8c69</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>87993408-019a-1000-81fc-6a0cd080b3a2</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>87486333-019a-1000-3578-f7d268a4c81a</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>8746a4ad-019a-1000-b7a3-7e417296c4e0</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>875c2446-019a-1000-8914-697d7daab28f</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>text message</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>87a3e6c4-019a-1000-e7b0-a8436b9c8f62</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>87a3819e-019a-1000-8cbb-82ec16850c11</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>87a53368-019a-1000-ae95-1f4056f5a835</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>merged</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>8797d481-019a-1000-a6c4-bcfbf7805db5</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>8741e461-019a-1000-3aec-2b41587dc995</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>87993408-019a-1000-81fc-6a0cd080b3a2</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>Response</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <connection>
+      <id>877b3a54-019a-1000-243b-287eb5355961</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>876d0832-019a-1000-0e97-30055053c266</sourceId>
+      <sourceGroupId>7f72a945-019a-1000-3f56-3af3058494ef</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>9d71b211-019a-1000-a670-b39f52a5e329</destinationId>
+      <destinationGroupId>7f72a945-019a-1000-3f56-3af3058494ef</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>10000</maxWorkQueueSize>
+      <maxWorkQueueDataSize>1 GB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+      <partitioningAttribute/>
+      <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+    </connection>
+    <controllerService>
+      <id>876e1e67-019a-1000-d00f-0b15a2dd6c8f</id>
+      <name>JsonRecordSetWriter</name>
+      <comment/>
+      <class>org.apache.nifi.json.JsonRecordSetWriter</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-record-serialization-services-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <enabled>true</enabled>
+      <property>
+        <name>Schema Write Strategy</name>
+        <value>no-schema</value>
+      </property>
+      <property>
+        <name>schema-cache</name>
+      </property>
+      <property>
+        <name>schema-protocol-version</name>
+        <value>1</value>
+      </property>
+      <property>
+        <name>schema-access-strategy</name>
+        <value>inherit-record-schema</value>
+      </property>
+      <property>
+        <name>schema-registry</name>
+      </property>
+      <property>
+        <name>schema-name</name>
+        <value>${schema.name}</value>
+      </property>
+      <property>
+        <name>schema-version</name>
+      </property>
+      <property>
+        <name>schema-branch</name>
+      </property>
+      <property>
+        <name>schema-text</name>
+        <value>${avro.schema}</value>
+      </property>
+      <property>
+        <name>Date Format</name>
+      </property>
+      <property>
+        <name>Time Format</name>
+      </property>
+      <property>
+        <name>Timestamp Format</name>
+      </property>
+      <property>
+        <name>Pretty Print JSON</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>suppress-nulls</name>
+        <value>never-suppress</value>
+      </property>
+      <property>
+        <name>output-grouping</name>
+        <value>output-array</value>
+      </property>
+      <property>
+        <name>compression-format</name>
+        <value>none</value>
+      </property>
+      <property>
+        <name>compression-level</name>
+        <value>1</value>
+      </property>
+    </controllerService>
+    <controllerService>
+      <id>8e059e3a-019a-1000-f871-fa4093fdfa95</id>
+      <name>ParquetRecordSetWriterFillNull</name>
+      <comment/>
+      <class>org.apache.nifi.parquet.ParquetRecordSetWriter</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-parquet-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <enabled>true</enabled>
+      <property>
+        <name>Schema Write Strategy</name>
+        <value>no-schema</value>
+      </property>
+      <property>
+        <name>schema-cache</name>
+      </property>
+      <property>
+        <name>schema-protocol-version</name>
+        <value>1</value>
+      </property>
+      <property>
+        <name>schema-access-strategy</name>
+        <value>schema-text-property</value>
+      </property>
+      <property>
+        <name>schema-registry</name>
+      </property>
+      <property>
+        <name>schema-name</name>
+        <value>${schema.name}</value>
+      </property>
+      <property>
+        <name>schema-version</name>
+      </property>
+      <property>
+        <name>schema-branch</name>
+      </property>
+      <property>
+        <name>schema-text</name>
+        <value>{
+  "type": "record",
+  "name": "Tweet",
+  "fields": [
+    {"name": "type", "type": "string"},
+    {"name": "id", "type": "string"},
+    {"name": "text", "type": "string"},
+    {"name": "createdAt", "type": "string"},
+    {"name": "lang", "type": "string"},
+    {"name": "author", "type": {
+      "type": "record",
+      "name": "Author",
+      "fields": [
+        {"name": "userName", "type": "string"},
+        {"name": "name", "type": "string"}
+      ]
+    }}
+  ]
+}</value>
+      </property>
+      <property>
+        <name>cache-size</name>
+        <value>1000</value>
+      </property>
+      <property>
+        <name>compression-type</name>
+        <value>UNCOMPRESSED</value>
+      </property>
+      <property>
+        <name>row-group-size</name>
+      </property>
+      <property>
+        <name>page-size</name>
+      </property>
+      <property>
+        <name>dictionary-page-size</name>
+      </property>
+      <property>
+        <name>max-padding-size</name>
+      </property>
+      <property>
+        <name>enable-dictionary-encoding</name>
+      </property>
+      <property>
+        <name>enable-validation</name>
+      </property>
+      <property>
+        <name>writer-version</name>
+      </property>
+      <property>
+        <name>avro-write-old-list-structure</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>avro-add-list-element-records</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>int96-fields</name>
+      </property>
+    </controllerService>
+    <controllerService>
+      <id>877a5a5a-019a-1000-455e-1420a58827bd</id>
+      <name>ParquetRecordSetWriter</name>
+      <comment/>
+      <class>org.apache.nifi.parquet.ParquetRecordSetWriter</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-parquet-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <enabled>true</enabled>
+      <property>
+        <name>Schema Write Strategy</name>
+        <value>no-schema</value>
+      </property>
+      <property>
+        <name>schema-cache</name>
+      </property>
+      <property>
+        <name>schema-protocol-version</name>
+        <value>1</value>
+      </property>
+      <property>
+        <name>schema-access-strategy</name>
+        <value>inherit-record-schema</value>
+      </property>
+      <property>
+        <name>schema-registry</name>
+      </property>
+      <property>
+        <name>schema-name</name>
+        <value>${schema.name}</value>
+      </property>
+      <property>
+        <name>schema-version</name>
+      </property>
+      <property>
+        <name>schema-branch</name>
+      </property>
+      <property>
+        <name>schema-text</name>
+        <value>${avro.schema}</value>
+      </property>
+      <property>
+        <name>cache-size</name>
+        <value>1000</value>
+      </property>
+      <property>
+        <name>compression-type</name>
+        <value>UNCOMPRESSED</value>
+      </property>
+      <property>
+        <name>row-group-size</name>
+      </property>
+      <property>
+        <name>page-size</name>
+      </property>
+      <property>
+        <name>dictionary-page-size</name>
+      </property>
+      <property>
+        <name>max-padding-size</name>
+      </property>
+      <property>
+        <name>enable-dictionary-encoding</name>
+      </property>
+      <property>
+        <name>enable-validation</name>
+      </property>
+      <property>
+        <name>writer-version</name>
+      </property>
+      <property>
+        <name>avro-write-old-list-structure</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>avro-add-list-element-records</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>int96-fields</name>
+      </property>
+    </controllerService>
+    <controllerService>
+      <id>8747a7c8-019a-1000-d090-71adf038f822</id>
+      <name>BlueSky</name>
+      <comment/>
+      <class>org.apache.nifi.websocket.jetty.JettyWebSocketClient</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-websocket-services-jetty-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <enabled>true</enabled>
+      <property>
+        <name>input-buffer-size</name>
+        <value>4 kb</value>
+      </property>
+      <property>
+        <name>max-text-message-size</name>
+        <value>64 kb</value>
+      </property>
+      <property>
+        <name>max-binary-message-size</name>
+        <value>64 kb</value>
+      </property>
+      <property>
+        <name>websocket-uri</name>
+        <value>ws://localhost:8765</value>
+      </property>
+      <property>
+        <name>ssl-context-service</name>
+      </property>
+      <property>
+        <name>connection-timeout</name>
+        <value>3 sec</value>
+      </property>
+      <property>
+        <name>session-maintenance-interval</name>
+        <value>10 sec</value>
+      </property>
+      <property>
+        <name>user-name</name>
+      </property>
+      <property>
+        <name>user-password</name>
+      </property>
+      <property>
+        <name>authentication-charset</name>
+        <value>US-ASCII</value>
+      </property>
+      <property>
+        <name>proxy-host</name>
+      </property>
+      <property>
+        <name>proxy-port</name>
+      </property>
+    </controllerService>
+    <controllerService>
+      <id>876de9d6-019a-1000-9e4d-c2f2ae180d79</id>
+      <name>JsonTreeReader</name>
+      <comment/>
+      <class>org.apache.nifi.json.JsonTreeReader</class>
+      <bundle>
+        <group>org.apache.nifi</group>
+        <artifact>nifi-record-serialization-services-nar</artifact>
+        <version>1.14.0</version>
+      </bundle>
+      <enabled>true</enabled>
+      <property>
+        <name>schema-access-strategy</name>
+        <value>infer-schema</value>
+      </property>
+      <property>
+        <name>schema-registry</name>
+      </property>
+      <property>
+        <name>schema-name</name>
+        <value>${schema.name}</value>
+      </property>
+      <property>
+        <name>schema-version</name>
+      </property>
+      <property>
+        <name>schema-branch</name>
+      </property>
+      <property>
+        <name>schema-text</name>
+        <value>${avro.schema}</value>
+      </property>
+      <property>
+        <name>schema-inference-cache</name>
+      </property>
+      <property>
+        <name>Date Format</name>
+      </property>
+      <property>
+        <name>Time Format</name>
+      </property>
+      <property>
+        <name>Timestamp Format</name>
+      </property>
+    </controllerService>
+  </rootGroup>
+  <controllerServices/>
+  <reportingTasks/>
+</flowController>
