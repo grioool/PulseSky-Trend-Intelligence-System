@@ -602,11 +602,11 @@
       </property>
       <property>
         <name>Access Key</name>
-        <value>enc{50d3da9901906112608ab68e1978ca1918beec59d28962e74617fc022510f52870c20fe4d4e58826238ebcba1876b3be34a7b91e}</value>
+        <value>enc{d8fe3d56c7d34952c16a4d0df15fa4caa7e760ea2658aca606b357f247794289df6603bc62d46b76618f1d1622f4590490246ed1}</value>
       </property>
       <property>
         <name>Secret Key</name>
-        <value>enc{ea16b274c1dc2f06a57b888c415629b4d2821f2c7f31076bfefa8e20fc62ccf9f3655f8f461fa0e52ceb3c0219ad8c379bfbe7019ee2a556e88e866aa14ad2c79c807f50ecbebce1}</value>
+        <value>enc{e7fc14bff1c864c018e3dabaf47ef726ba98dfe680c5ba31e94464a2fe4343af339a9526898208b73b2ae504a022ea89b0d592d881181ed4950b90d3b208429a9a738d0bab1e1a83}</value>
       </property>
       <property>
         <name>Credentials File</name>
@@ -919,7 +919,7 @@
       </property>
       <property>
         <name>min-records</name>
-        <value>5</value>
+        <value>50</value>
       </property>
       <property>
         <name>max-records</name>
@@ -937,7 +937,7 @@
       </property>
       <property>
         <name>max.bin.count</name>
-        <value>10</value>
+        <value>100</value>
       </property>
       <autoTerminatedRelationship>failure</autoTerminatedRelationship>
       <autoTerminatedRelationship>original</autoTerminatedRelationship>
@@ -1202,11 +1202,11 @@
       </property>
       <property>
         <name>Access Key</name>
-        <value>enc{21581dca00b68af4c79a98cb5d27dcba3a65293b8acb94faed1b6a0238b18cdaa8cfd116aedc064f3116ff538b1fd627405c4f80}</value>
+        <value>enc{d46a5305ba9c453c09b9afec25aa2c33e1fb25ff9f6b4891708d66d8a4862e67312654e5254ff8b6857f0e010c1f3b187b9fe63b}</value>
       </property>
       <property>
         <name>Secret Key</name>
-        <value>enc{84e6fb0ae9da75b0121923c14ec7c15fec7ffaf7cbaf2cb7bc7fc5ab8b74e8cb909be7e75ad97b4c57d27df322b6bb7ee226c128b5c324080f144a0b8481b6abadb15b330c0bddd7}</value>
+        <value>enc{5c23684ba6b2ef8feabe2b0e61889a803244b93489e5b02033564d14335ca350bf9c45530a50743d4429be6a2c0028e0d4481ed87b16ddac5420687c5eebc9404b4efa1c22284afa}</value>
       </property>
       <property>
         <name>Credentials File</name>
@@ -2109,22 +2109,159 @@
         <value>{
   "type": "record",
   "name": "Tweet",
+  "namespace": "com.example.twitter",
   "fields": [
-    {"name": "type", "type": "string"},
-    {"name": "id", "type": "string"},
-    {"name": "text", "type": "string"},
-    {"name": "createdAt", "type": "string"},
-    {"name": "lang", "type": "string"},
-    {"name": "author", "type": {
-      "type": "record",
-      "name": "Author",
-      "fields": [
-        {"name": "userName", "type": "string"},
-        {"name": "name", "type": "string"}
-      ]
-    }}
+    { "name": "type", "type": ["null", "string"], "default": null },
+    { "name": "id", "type": ["null", "string"], "default": null },
+    { "name": "url", "type": ["null", "string"], "default": null },
+    { "name": "twitterUrl", "type": ["null", "string"], "default": null },
+    { "name": "text",   "type": ["null", "string"], "default": null },
+    { "name": "source", "type": ["null", "string"], "default": null },
+
+    { "name": "retweetCount", "type": ["null", "int"], "default": null },
+    { "name": "replyCount",   "type": ["null", "int"], "default": null },
+    { "name": "likeCount",    "type": ["null", "int"], "default": null },
+    { "name": "quoteCount",   "type": ["null", "int"], "default": null },
+    { "name": "viewCount",    "type": ["null", "int"], "default": null },
+
+    { "name": "createdAt", "type": ["null", "string"], "default": null },
+    { "name": "lang",      "type": ["null", "string"], "default": null },
+    { "name": "bookmarkCount", "type": ["null", "int"], "default": null },
+
+    { "name": "isReply", "type": ["null", "boolean"], "default": null },
+    { "name": "inReplyToId", "type": ["null", "string"], "default": null },
+    { "name": "conversationId", "type": ["null", "string"], "default": null },
+
+    {
+      "name": "displayTextRange",
+      "type": ["null", {
+        "type": "array",
+        "items": "int"
+      }],
+      "default": null
+    },
+
+    {
+      "name": "author",
+      "type": ["null", {
+        "type": "record",
+        "name": "Author",
+        "fields": [
+          { "name": "type", "type": ["null", "string"], "default": null },
+          { "name": "userName", "type": ["null", "string"], "default": null },
+          { "name": "url", "type": ["null", "string"], "default": null },
+          { "name": "twitterUrl", "type": ["null", "string"], "default": null },
+          { "name": "id", "type": ["null", "string"], "default": null },
+          { "name": "name", "type": ["null", "string"], "default": null },
+
+          { "name": "isVerified",     "type": ["null", "boolean"], "default": null },
+          { "name": "isBlueVerified", "type": ["null", "boolean"], "default": null },
+
+          { "name": "profilePicture", "type": ["null", "string"], "default": null },
+          { "name": "coverPicture",   "type": ["null", "string"], "default": null },
+          { "name": "description",    "type": ["null", "string"], "default": null },
+          { "name": "location",       "type": ["null", "string"], "default": null },
+
+          { "name": "followers", "type": ["null", "int"], "default": null },
+          { "name": "following", "type": ["null", "int"], "default": null },
+
+          { "name": "status",  "type": ["null", "string"], "default": null },
+          { "name": "canDm",   "type": ["null", "boolean"], "default": null },
+          { "name": "canMediaTag", "type": ["null", "boolean"], "default": null },
+
+          { "name": "createdAt", "type": ["null", "string"], "default": null },
+
+          {
+            "name": "entities",
+            "type": ["null", {
+              "type": "record",
+              "name": "UserEntities",
+              "fields": [
+                {
+                  "name": "description",
+                  "type": ["null", {
+                    "type": "record",
+                    "name": "UserDescription",
+                    "fields": [
+                      { "name": "urls", "type": ["null", {"type": "array", "items": "string"}], "default": null }
+                    ]
+                  }],
+                  "default": null
+                },
+                { "name": "url", "type": ["null", "string"], "default": null }
+              ]
+            }],
+            "default": null
+          },
+
+          { "name": "fastFollowersCount", "type": ["null", "int"], "default": null },
+          { "name": "favouritesCount",    "type": ["null", "int"], "default": null },
+          { "name": "hasCustomTimelines", "type": ["null", "boolean"], "default": null },
+
+          { "name": "isTranslator", "type": ["null", "boolean"], "default": null },
+          { "name": "mediaCount",   "type": ["null", "int"], "default": null },
+          { "name": "statusesCount", "type": ["null", "int"], "default": null },
+
+          {
+            "name": "withheldInCountries",
+            "type": ["null", {"type": "array", "items": "string"}],
+            "default": null
+          },
+
+          { "name": "affiliatesHighlightedLabel", "type": ["null", "string"], "default": null },
+          { "name": "possiblySensitive", "type": ["null", "boolean"], "default": null },
+
+          { "name": "pinnedTweetIds", "type": ["null", { "type": "array", "items": "string" }], "default": null },
+          { "name": "profile_bio", "type": ["null", "string"], "default": null },
+          { "name": "isAutomated", "type": ["null", "boolean"], "default": null }
+        ]
+      }],
+      "default": null
+    },
+
+    { "name": "extendedEntities", "type": ["null", "string"], "default": null },
+    { "name": "place", "type": ["null", "string"], "default": null },
+
+    {
+      "name": "entities",
+      "type": ["null", {
+        "type": "record",
+        "name": "Entities",
+        "fields": [
+          { "name": "hashtags", "type": ["null", { "type": "array", "items": "string" }], "default": null },
+          { "name": "symbols", "type": ["null", { "type": "array", "items": "string" }], "default": null },
+          { "name": "timestamps", "type": ["null", { "type": "array", "items": "string" }], "default": null },
+          { "name": "urls",   "type": ["null", { "type": "array", "items": "string" }], "default": null },
+
+          {
+            "name": "user_mentions",
+            "type": ["null", {
+              "type": "array",
+              "items": {
+                "type": "record",
+                "name": "UserMention",
+                "fields": [
+                  { "name": "id_str", "type": ["null", "string"], "default": null },
+                  { "name": "name", "type": ["null", "string"], "default": null },
+                  { "name": "screen_name", "type": ["null", "string"], "default": null },
+
+                  {
+                    "name": "indices",
+                    "type": ["null", { "type": "array", "items": "int" }],
+                    "default": null
+                  }
+                ]
+              }
+            }],
+            "default": null
+          }
+        ]
+      }],
+      "default": null
+    }
   ]
-}</value>
+}
+</value>
       </property>
       <property>
         <name>cache-size</name>
